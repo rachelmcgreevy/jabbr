@@ -36,14 +36,34 @@
     [mainView addSubview:detailsView];
     
     UIImageView *emailLabel = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,20,20)];
+    emailLabel.contentMode = UIViewContentModeScaleAspectFit;
     emailLabel.image = [UIImage imageNamed:@"Graphics/emailIcon.png"];
     UITextField *email = [[UITextField alloc] initWithFrame:CGRectMake(40, 0, screenWidth/2, 20)];
-    email.textColor = [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:0.4f];
-    email.backgroundColor=[UIColor clearColor];
+    email.textColor = [UIColor colorWithWhite:255/225.0f alpha:1.f];    email.backgroundColor=[UIColor clearColor];
     email.leftViewMode = UITextFieldViewModeAlways;
     email.leftView = emailLabel;
-    email.text= @"example@me.com";
+    email.placeholder = @"example@me.com";
     [detailsView addSubview:email];
+    
+    
+    UIImageView *passwordLabel = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,20,20)];
+    passwordLabel.contentMode = UIViewContentModeScaleAspectFit;
+    passwordLabel.image = [UIImage imageNamed:@"Graphics/passwordIcon.png"];
+    UITextField *password = [[UITextField alloc] initWithFrame:CGRectMake(40, 40, screenWidth/2, 20)];
+    password.textColor = [UIColor colorWithWhite:255/225.0f alpha:1.f];
+    password.backgroundColor=[UIColor clearColor];
+    password.leftViewMode = UITextFieldViewModeAlways;
+    password.leftView = passwordLabel;
+    password.placeholder = @"password123";
+    password.secureTextEntry = YES;
+    [detailsView addSubview:password];
+    
+    
+    UIButton *login = [[UIButton alloc] initWithFrame:CGRectMake(40, 80, 50, 20)];
+    [login setTitle:@"Login" forState:UIControlStateNormal];
+    [login addTarget:self action:@selector(loginButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+
+    [detailsView addSubview:login];
 
 }
 - (void)viewDidLoad {
@@ -60,6 +80,10 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+- (void)loginButtonClicked:(UIButton*)sender {
+    NSLog(@"you clicked the login button");
 }
 
 @end
