@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateProfileController : UIViewController
-
+@interface CreateProfileController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
 

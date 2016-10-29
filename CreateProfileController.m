@@ -9,8 +9,7 @@
 
 @interface CreateProfileController ()
 
-@property (strong, atomic) UITextField *email;
-@property (strong, atomic) UITextField *password;
+@property (strong, atomic) UIImageView *profilePhoto;
 
 @end
 
@@ -34,14 +33,28 @@
     [mainView addSubview:title];
     title.image = [UIImage imageNamed:@"Graphics/jabbr.png"];
     
-    UIView *detailsView = [[UIView alloc]initWithFrame:CGRectMake(0, screenHeight/3, screenWidth,screenHeight/3)];
+    UIView *detailsView = [[UIView alloc]initWithFrame:CGRectMake(0, screenHeight/5, screenWidth,screenHeight/1.5)];
     [mainView addSubview:detailsView];
     
+    _profilePhoto = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
+    _profilePhoto.image = [UIImage imageNamed:@"Graphics/jabbr.png"];
+    _profilePhoto.center = CGPointMake(screenWidth/2, 75);
+    _profilePhoto.layer.cornerRadius = _profilePhoto.frame.size.width/2;
+    _profilePhoto.layer.borderColor = [UIColor grayColor].CGColor;
+    _profilePhoto.layer.masksToBounds = YES;
+    _profilePhoto.clipsToBounds = YES;
+    _profilePhoto.userInteractionEnabled = YES;
+
     
+    UITapGestureRecognizer *addPhoto =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addPhotoButtonClicked:)];
+    [addPhoto setNumberOfTapsRequired:1];
     
+    [_profilePhoto addGestureRecognizer:addPhoto];
+    [detailsView addSubview:_profilePhoto];
     
     
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -52,9 +65,31 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/*
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
 }
+*/
+
+- (void)addPhotoButtonClicked:(UIButton*)sender {
+    
+    NSLog(@"made it to here");
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    _profilePhoto.image = image;
+    [picker dismissViewControllerAnimated:YES completion:nil];
+
+}
+
 @end
