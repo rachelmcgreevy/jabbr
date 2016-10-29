@@ -7,8 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "CreateProfileController.h"
 
 @interface ViewController ()
+
+@property (strong, atomic) UITextField *email;
+@property (strong, atomic) UITextField *password;
+
 
 @end
 
@@ -38,25 +43,26 @@
     UIImageView *emailLabel = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,20,20)];
     emailLabel.contentMode = UIViewContentModeScaleAspectFit;
     emailLabel.image = [UIImage imageNamed:@"Graphics/emailIcon.png"];
-    UITextField *email = [[UITextField alloc] initWithFrame:CGRectMake(40, 0, screenWidth/2, 20)];
-    email.textColor = [UIColor colorWithWhite:255/225.0f alpha:1.f];    email.backgroundColor=[UIColor clearColor];
-    email.leftViewMode = UITextFieldViewModeAlways;
-    email.leftView = emailLabel;
-    email.placeholder = @"example@me.com";
-    [detailsView addSubview:email];
+    _email = [[UITextField alloc] initWithFrame:CGRectMake(40, 0, screenWidth/2, 20)];
+    _email.textColor = [UIColor colorWithWhite:255/225.0f alpha:1.f];
+    _email.backgroundColor=[UIColor clearColor];
+    _email.leftViewMode = UITextFieldViewModeAlways;
+    _email.leftView = emailLabel;
+    _email.placeholder = @"example@me.com";
+    [detailsView addSubview:_email];
     
     
     UIImageView *passwordLabel = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,20,20)];
     passwordLabel.contentMode = UIViewContentModeScaleAspectFit;
     passwordLabel.image = [UIImage imageNamed:@"Graphics/passwordIcon.png"];
-    UITextField *password = [[UITextField alloc] initWithFrame:CGRectMake(40, 40, screenWidth/2, 20)];
-    password.textColor = [UIColor colorWithWhite:255/225.0f alpha:1.f];
-    password.backgroundColor=[UIColor clearColor];
-    password.leftViewMode = UITextFieldViewModeAlways;
-    password.leftView = passwordLabel;
-    password.placeholder = @"password123";
-    password.secureTextEntry = YES;
-    [detailsView addSubview:password];
+    _password = [[UITextField alloc] initWithFrame:CGRectMake(40, 40, screenWidth/2, 20)];
+    _password.textColor = [UIColor colorWithWhite:255/225.0f alpha:1.f];
+    _password.backgroundColor=[UIColor clearColor];
+    _password.leftViewMode = UITextFieldViewModeAlways;
+    _password.leftView = passwordLabel;
+    _password.placeholder = @"password123";
+    _password.secureTextEntry = YES;
+    [detailsView addSubview:_password];
     
     
     UIButton *login = [[UIButton alloc] initWithFrame:CGRectMake(40, 80, 50, 20)];
@@ -83,7 +89,16 @@
 }
 
 - (void)loginButtonClicked:(UIButton*)sender {
+    
     NSLog(@"you clicked the login button");
+    NSString *userEmail = _email.text;
+    NSString *userPassword = _password.text;
+    NSLog(@"user entered email: %@", userEmail);
+    NSLog(@"user entered password: %@", userPassword);
+    
+    //later add in condition to execute only if new profile being created.
+    CreateProfileController *controller = [[CreateProfileController alloc] init];
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 @end
