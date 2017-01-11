@@ -6,10 +6,20 @@
 //  Copyright © 2016 Rachel McGreevy. All rights reserved.
 //
 #import "CreateProfileController.h"
+#import "jabbr-Swift.h"
 
 @interface CreateProfileController ()
 
 @property (strong, atomic) UIImageView *profilePhoto;
+@property (strong, atomic) UITextField *name;
+@property (strong, atomic) UITextField *age;
+@property (strong, atomic) UITextField *gender;
+@property (strong, atomic) UIView *detailsView;
+@property CGFloat screenWidth;
+@property CGFloat screenHeight;
+
+@property NSArray *pickerData;
+@property NSArray *languagesList;
 
 @end
 
@@ -18,40 +28,23 @@
 -(void) loadView{
     [super loadView];
     CGRect screenRect = [[UIScreen mainScreen] bounds];
-    CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
-    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, screenWidth,screenHeight)];
-    view.backgroundColor = [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:1.0f];
+    _screenWidth = screenRect.size.width;
+    _screenHeight = screenRect.size.height;
+    UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, _screenWidth, _screenHeight)];
+    view.backgroundColor = [UIColor colorWithRed:84/255.0f green:144/255.0f blue:196/255.0f alpha:1.0f];
     self.view = view;
     
     CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
-    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, statusBarHeight, screenWidth, screenHeight-statusBarHeight)];
+    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, statusBarHeight, _screenWidth, _screenHeight-statusBarHeight)];
     [self.view addSubview:mainView];
     
-    UIImageView *title = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, screenWidth, 100)];
-    title.contentMode = UIViewContentModeScaleAspectFit;
-    [mainView addSubview:title];
-    title.image = [UIImage imageNamed:@"Graphics/jabbr.png"];
+    [self createVCTitle:mainView];
     
-    UIView *detailsView = [[UIView alloc]initWithFrame:CGRectMake(0, screenHeight/5, screenWidth,screenHeight/1.5)];
-    [mainView addSubview:detailsView];
+    _detailsView = [[UIView alloc]initWithFrame:CGRectMake(0, _screenHeight/5, _screenWidth,_screenHeight/1.5)];
+    [mainView addSubview:_detailsView];
     
-    _profilePhoto = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
-    _profilePhoto.image = [UIImage imageNamed:@"Graphics/jabbr.png"];
-    _profilePhoto.center = CGPointMake(screenWidth/2, 75);
-    _profilePhoto.layer.cornerRadius = _profilePhoto.frame.size.width/2;
-    _profilePhoto.layer.borderColor = [UIColor grayColor].CGColor;
-    _profilePhoto.layer.masksToBounds = YES;
-    _profilePhoto.clipsToBounds = YES;
-    _profilePhoto.userInteractionEnabled = YES;
-    
-    
-    UITapGestureRecognizer *addPhoto =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addPhotoButtonClicked:)];
-    [addPhoto setNumberOfTapsRequired:1];
-    
-    [_profilePhoto addGestureRecognizer:addPhoto];
-    [detailsView addSubview:_profilePhoto];
-    
+    [self createVCProfileDetails];
+    [self createVCLanguageDetails];
     
 }
 
@@ -65,16 +58,121 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
- - (UIStatusBarStyle)preferredStatusBarStyle
- {
- return UIStatusBarStyleLightContent;
- }
- */
 
-- (void)addPhotoButtonClicked:(UIButton*)sender {
+-(void) createVCTitle:(UIView *)mainView {
+    UIImageView *title = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, _screenWidth, 150)];
+    title.contentMode = UIViewContentModeScaleAspectFit;
+    [mainView addSubview:title];
+    title.image = [UIImage imageNamed:@"Graphics/jabbr.png"];
+}
+
+-(void) createVCProfileDetails {
+    _profilePhoto = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 150, 150)];
+    _profilePhoto.tag = 1;
+    _profilePhoto.image = [UIImage imageNamed:@"Graphics/jabbr.png"];
+    _profilePhoto.center = CGPointMake(_screenWidth/2, 110);
+    _profilePhoto.layer.cornerRadius = _profilePhoto.frame.size.width/2;
+    _profilePhoto.layer.borderColor = [UIColor grayColor].CGColor;
+    _profilePhoto.layer.masksToBounds = YES;
+    _profilePhoto.clipsToBounds = YES;
+    _profilePhoto.userInteractionEnabled = YES;
+    [_detailsView addSubview:_profilePhoto];
     
-    NSLog(@"made it to here");
+    UITapGestureRecognizer *addPhoto =  [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addPhotoButtonClicked:)];
+    [addPhoto setNumberOfTapsRequired:1];
+    [_profilePhoto addGestureRecognizer:addPhoto];
+    
+    UIImageView *nameIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,50,20)];
+    nameIcon.contentMode = UIViewContentModeScaleAspectFit;
+    nameIcon.image = [UIImage imageNamed:@"Graphics/emailIcon.png"];
+    _name = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, _screenWidth/1.2, 20)];
+    _name.tag = 1;
+    _name.textColor = [UIColor colorWithWhite:255/225.0f alpha:1.f];
+    _name.backgroundColor=[UIColor clearColor];
+    _name.leftViewMode = UITextFieldViewModeAlways;
+    _name.leftView = nameIcon;
+    _name.placeholder = @"John Doe";
+    [_detailsView addSubview:_name];
+    _name.center = CGPointMake(_screenWidth/2, 220);
+    
+    UIPickerView *agePV = [[UIPickerView alloc] initWithFrame:CGRectMake(0,0,3*(_screenWidth/4), 130)];
+    NSMutableArray *array = [[NSMutableArray alloc]init];
+    for(int i=1; i<=100; i++){
+        [array addObject:[NSString stringWithFormat:@"%i",i]];
+    }
+    _pickerData = array;
+    agePV.delegate = self;
+    agePV.dataSource = self;
+    agePV.showsSelectionIndicator = YES;
+    agePV.tag = 1;
+    [_detailsView addSubview:agePV];
+    agePV.center = CGPointMake(_screenWidth/2, 280);
+    
+    UIButton *nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
+    [nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    nextButton.tag = 1;
+    [_detailsView addSubview:nextButton];
+    nextButton.center = CGPointMake(_screenWidth/2, 390);
+    
+    [nextButton addTarget:self action:@selector(nextButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+
+}
+-(void) createVCLanguageDetails {
+    
+    UILabel *fluentLanguagesLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, _screenWidth/1.2, 20)];
+    fluentLanguagesLabel.tag = 2;
+    fluentLanguagesLabel.textColor = [UIColor whiteColor];
+    fluentLanguagesLabel.backgroundColor=[UIColor clearColor];
+    fluentLanguagesLabel.text = @"Languages I am Fluent in";
+    fluentLanguagesLabel.hidden = YES;
+    [_detailsView addSubview:fluentLanguagesLabel];
+    
+    UIButton *addFluentLanguagesButton = [[UIButton alloc] initWithFrame:CGRectMake(_screenWidth-30, 50, 20, 20)];
+    [addFluentLanguagesButton setTitle:@"Fluent" forState:UIControlStateNormal];
+    [addFluentLanguagesButton setImage:[UIImage imageNamed:@"Graphics/plus.png"] forState:UIControlStateNormal];
+    addFluentLanguagesButton.tag = 2;
+    addFluentLanguagesButton.hidden = YES;
+    [_detailsView addSubview:addFluentLanguagesButton];
+    [addFluentLanguagesButton addTarget:self action:@selector(addLanguageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+
+    
+    UILabel *learningLanguagesLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 200, _screenWidth/1.2, 20)];
+    learningLanguagesLabel.tag = 2;
+    learningLanguagesLabel.textColor = [UIColor whiteColor];
+    learningLanguagesLabel.backgroundColor=[UIColor clearColor];
+    learningLanguagesLabel.text = @"Languages I am Learning";
+    learningLanguagesLabel.hidden = YES;
+    [_detailsView addSubview:learningLanguagesLabel];
+    
+    UIButton *addLearningLanguagesButton = [[UIButton alloc] initWithFrame:CGRectMake(_screenWidth-30, 200, 20, 20)];
+    [addLearningLanguagesButton setTitle:@"Learning" forState:UIControlStateNormal];
+    [addLearningLanguagesButton setImage:[UIImage imageNamed:@"Graphics/plus.png"] forState:UIControlStateNormal];
+    addLearningLanguagesButton.tag = 2;
+    addLearningLanguagesButton.hidden = YES;
+    [_detailsView addSubview:addLearningLanguagesButton];
+    [addLearningLanguagesButton addTarget:self action:@selector(addLanguageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
+    [backButton setTitle:@"Back" forState:UIControlStateNormal];
+    backButton.tag = 2;
+    backButton.hidden = YES;
+    [_detailsView addSubview:backButton];
+    backButton.center = CGPointMake(_screenWidth/2 - 50, 490);
+    
+    [backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *finishButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
+    [finishButton setTitle:@"Finish" forState:UIControlStateNormal];
+    finishButton.tag = 2;
+    finishButton.hidden = YES;
+    [_detailsView addSubview:finishButton];
+    finishButton.center = CGPointMake(_screenWidth/2 + 50, 490);
+    
+    [finishButton addTarget:self action:@selector(finishButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void) addPhotoButtonClicked:(UIButton*)sender {
+    NSLog(@"User clicked to add a profile photo");
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
@@ -82,14 +180,97 @@
     picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
     [self presentViewController:picker animated:YES completion:NULL];
-    
+}
+
+- (void)nextButtonClicked:(UIButton *)sender {
+    NSLog(@"User clicked the next button");
+    for(UIView *view in _detailsView.subviews){
+        if(view.tag == 1){
+            view.hidden = YES;
+        }
+        if(view.tag == 2){
+            view.hidden = NO;
+        }
+    }
+}
+
+- (void)backButtonClicked:(UIButton *)sender {
+    NSLog(@"User clicked the next button");
+    for(UIView *view in _detailsView.subviews){
+        if(view.tag == 2){
+            view.hidden = YES;
+        }
+        if(view.tag == 1){
+            view.hidden = NO;
+        }
+    }
+}
+
+- (void) addLanguageButtonClicked:(UIButton*)sender {
+    NSLog(@"%@", [NSString stringWithFormat:@"User clicked to add a language for %@", sender.titleLabel.text]);
+    PickerView *languagePicker = [[PickerView alloc] init];
+    _languagesList = [NSArray arrayWithObjects:@"English", @"Italian", @"French", @"Spanish", @"German", nil];
+    languagePicker.translatesAutoresizingMaskIntoConstraints = NO;
+    languagePicker.delegate = self;
+    languagePicker.dataSource = self;
+    [self.view addSubview:languagePicker];
+}
+
+- (void)finishButtonClicked:(UIButton *)sender {
+    NSLog(@"User clicked the finish button");
+    //
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     _profilePhoto.image = image;
     [picker dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
+// The number of columns of data
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+// The number of rows of data
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return _pickerData.count;
+}
+
+// The data to return for the row and component (column) that's being passed in
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return _pickerData[row];
+}
+
+-(NSInteger)pickerViewNumberOfRows:(PickerView *)pickerView {
+    return _languagesList.count;
+}
+
+-(NSString *)pickerView:(PickerView *)pickerView titleForRow:(NSInteger)row index:(NSInteger)index {
+    return _languagesList[index];
+}
+
+-(CGFloat) pickerViewHeightForRows:(PickerView *)pickerView {
+    return 50.0;
+}
+
+- (void) pickerView:(PickerView *)pickerView didSelectRow:(NSInteger)row {
+    NSString *selectedItem = _languagesList[row];
+    NSLog(@"User Selected %@", selectedItem);
+}
+
+-(void) pickerView:(PickerView *)pickerView styleForLabel:(UILabel *)label highlighted:(BOOL)highlighted {
+    label.textAlignment = NSTextAlignmentCenter;
+    
+    if (highlighted) {
+        label.font = [UIFont systemFontOfSize:25];
+        label.textColor = self.view.tintColor;
+    } else {
+        label.font = [UIFont systemFontOfSize:15];
+        label.textColor = [UIColor colorWithRed:245/255.f green:255/255.f blue:255/255.f alpha:1.f];
+    }
+}
 @end
