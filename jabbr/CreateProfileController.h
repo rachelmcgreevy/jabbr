@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "jabbr-Swift.h"
+#import "LanguagePickerViewController.h"
 
-@interface CreateProfileController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, PickerViewDelegate, PickerViewDataSource>
+@interface CreateProfileController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, LanguagePickerVCDelegate>
 
 @end

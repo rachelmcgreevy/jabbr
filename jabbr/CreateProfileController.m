@@ -6,7 +6,6 @@
 //  Copyright © 2016 Rachel McGreevy. All rights reserved.
 //
 #import "CreateProfileController.h"
-#import "jabbr-Swift.h"
 
 @interface CreateProfileController ()
 
@@ -19,8 +18,8 @@
 @property CGFloat screenHeight;
 
 @property NSArray *pickerData;
-@property NSArray *languagesList;
-
+@property (strong, nonatomic) NSMutableArray *fluentLanguagesList;
+@property (strong, nonatomic) NSMutableArray *learningLanguagesList;
 @end
 
 @implementation CreateProfileController
@@ -135,6 +134,12 @@
     [_detailsView addSubview:addFluentLanguagesButton];
     [addFluentLanguagesButton addTarget:self action:@selector(addLanguageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 
+    UIView *fluentLanguagesTagsView = [[UIView alloc] initWithFrame:CGRectMake(0, 100, _screenWidth, 100)];
+    fluentLanguagesTagsView.backgroundColor = [UIColor blueColor];
+    fluentLanguagesTagsView.tag = 2;
+    fluentLanguagesTagsView.hidden = YES;
+    [_detailsView addSubview:fluentLanguagesTagsView];
+    
     
     UILabel *learningLanguagesLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 200, _screenWidth/1.2, 20)];
     learningLanguagesLabel.tag = 2;
@@ -151,6 +156,9 @@
     addLearningLanguagesButton.hidden = YES;
     [_detailsView addSubview:addLearningLanguagesButton];
     [addLearningLanguagesButton addTarget:self action:@selector(addLanguageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _fluentLanguagesList = [[NSMutableArray alloc] init];
+    _learningLanguagesList = [[NSMutableArray alloc] init];
     
     UIButton *backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
     [backButton setTitle:@"Back" forState:UIControlStateNormal];
@@ -208,13 +216,12 @@
 
 - (void) addLanguageButtonClicked:(UIButton*)sender {
     NSLog(@"%@", [NSString stringWithFormat:@"User clicked to add a language for %@", sender.titleLabel.text]);
-    PickerView *languagePicker = [[PickerView alloc] init];
-    _languagesList = [NSArray arrayWithObjects:@"English", @"Italian", @"French", @"Spanish", @"German", nil];
-    languagePicker.translatesAutoresizingMaskIntoConstraints = NO;
+    LangaugePickerViewController *languagePicker = [[LangaugePickerViewController alloc] init];
+    [languagePicker initWithLanguageType:sender.titleLabel.text];
     languagePicker.delegate = self;
-    languagePicker.dataSource = self;
-    [self.view addSubview:languagePicker];
+    [self presentViewController:languagePicker animated:YES completion:NULL];
 }
+
 
 - (void)finishButtonClicked:(UIButton *)sender {
     NSLog(@"User clicked the finish button");
@@ -225,6 +232,22 @@
     UIImage *image = info[UIImagePickerControllerOriginalImage];
     _profilePhoto.image = image;
     [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+- (void)didCloseVC:(NSString *)selectedLanguage withLanguageType:(NSString *)languageType{
+    if ([languageType  isEqual: @"Fluent"]) {
+        [_fluentLanguagesList addObject:selectedLanguage];
+    } else {
+        [_learningLanguagesList addObject:selectedLanguage];
+    }
+    [self updateLanguageTagViews];
+    
+}
+
+- (void) updateLanguageTagViews {
+    
 }
 
 // The number of columns of data
@@ -245,32 +268,4 @@
     return _pickerData[row];
 }
 
--(NSInteger)pickerViewNumberOfRows:(PickerView *)pickerView {
-    return _languagesList.count;
-}
-
--(NSString *)pickerView:(PickerView *)pickerView titleForRow:(NSInteger)row index:(NSInteger)index {
-    return _languagesList[index];
-}
-
--(CGFloat) pickerViewHeightForRows:(PickerView *)pickerView {
-    return 50.0;
-}
-
-- (void) pickerView:(PickerView *)pickerView didSelectRow:(NSInteger)row {
-    NSString *selectedItem = _languagesList[row];
-    NSLog(@"User Selected %@", selectedItem);
-}
-
--(void) pickerView:(PickerView *)pickerView styleForLabel:(UILabel *)label highlighted:(BOOL)highlighted {
-    label.textAlignment = NSTextAlignmentCenter;
-    
-    if (highlighted) {
-        label.font = [UIFont systemFontOfSize:25];
-        label.textColor = self.view.tintColor;
-    } else {
-        label.font = [UIFont systemFontOfSize:15];
-        label.textColor = [UIColor colorWithRed:245/255.f green:255/255.f blue:255/255.f alpha:1.f];
-    }
-}
 @end

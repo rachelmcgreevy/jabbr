@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		882398071E266D31008B8C65 /* Graphics in Resources */ = {isa = PBXBuildFile; fileRef = 882398061E266D31008B8C65 /* Graphics */; };
-		8823980C1E26E369008B8C65 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8823980B1E26E369008B8C65 /* PickerView.swift */; };
+		889E26F41E2BDC78006A615F /* LanguagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E26F31E2BDC78006A615F /* LanguagePickerViewController.m */; };
 		88DF11151E25A232009290B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DF11141E25A232009290B4 /* main.m */; };
 		88DF11181E25A232009290B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DF11171E25A232009290B4 /* AppDelegate.m */; };
 		88DF111B1E25A232009290B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DF111A1E25A232009290B4 /* ViewController.m */; };
@@ -37,7 +37,8 @@
 
 /* Begin PBXFileReference section */
 		882398061E266D31008B8C65 /* Graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Graphics; sourceTree = "<group>"; };
-		8823980B1E26E369008B8C65 /* PickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		889E26F21E2BDC37006A615F /* LanguagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguagePickerViewController.h; sourceTree = "<group>"; };
+		889E26F31E2BDC78006A615F /* LanguagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguagePickerViewController.m; sourceTree = "<group>"; };
 		88DF11101E25A232009290B4 /* jabbr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jabbr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DF11141E25A232009290B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88DF11161E25A232009290B4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 		88DF11121E25A232009290B4 /* jabbr */ = {
 			isa = PBXGroup;
 			children = (
-				8823980B1E26E369008B8C65 /* PickerView.swift */,
 				88DF11161E25A232009290B4 /* AppDelegate.h */,
 				88DF11171E25A232009290B4 /* AppDelegate.m */,
 				88DF11191E25A232009290B4 /* ViewController.h */,
@@ -149,6 +149,8 @@
 			children = (
 				88DF11471E25A340009290B4 /* CreateProfileController.h */,
 				88DF11481E25A383009290B4 /* CreateProfileController.m */,
+				889E26F21E2BDC37006A615F /* LanguagePickerViewController.h */,
+				889E26F31E2BDC78006A615F /* LanguagePickerViewController.m */,
 			);
 			name = "User Profile";
 			sourceTree = "<group>";
@@ -289,10 +291,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				889E26F41E2BDC78006A615F /* LanguagePickerViewController.m in Sources */,
 				88DF111B1E25A232009290B4 /* ViewController.m in Sources */,
 				88DF11491E25A383009290B4 /* CreateProfileController.m in Sources */,
 				88DF11181E25A232009290B4 /* AppDelegate.m in Sources */,
-				8823980C1E26E369008B8C65 /* PickerView.swift in Sources */,
 				88DF11151E25A232009290B4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,7 +459,6 @@
 		88DF11411E25A232009290B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = B6C84G57E3;
 				INFOPLIST_FILE = jabbrTests/Info.plist;
@@ -471,7 +472,6 @@
 		88DF11421E25A232009290B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = B6C84G57E3;
 				INFOPLIST_FILE = jabbrTests/Info.plist;
@@ -485,7 +485,6 @@
 		88DF11441E25A232009290B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = B6C84G57E3;
 				INFOPLIST_FILE = jabbrUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -498,7 +497,6 @@
 		88DF11451E25A232009290B4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = B6C84G57E3;
 				INFOPLIST_FILE = jabbrUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

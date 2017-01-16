@@ -111,6 +111,7 @@
     //TODO: add in email / password verification
     //TODO: add in condition to execute only if new profile being created.
     CreateProfileController *controller = [[CreateProfileController alloc] init];
+    controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:controller animated:YES completion:nil];
     //TODO: add in condition to execute adding 
 }
