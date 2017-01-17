@@ -5,6 +5,8 @@ target 'jabbr' do
 
   # Pods for jabbr
     pod 'Firebase/Core'
+    pod 'Firebase/Messaging'
+
 
 
   target 'jabbrTests' do
