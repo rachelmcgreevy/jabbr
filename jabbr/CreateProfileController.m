@@ -6,6 +6,7 @@
 //  Copyright © 2016 Rachel McGreevy. All rights reserved.
 //
 #import "CreateProfileController.h"
+#import "LanguageListView.h"
 
 @interface CreateProfileController ()
 
@@ -19,7 +20,10 @@
 
 @property NSArray *pickerData;
 @property (strong, nonatomic) NSMutableArray *fluentLanguagesList;
+@property (strong, nonatomic) LanguageListView *fluentLanguageListView;
 @property (strong, nonatomic) NSMutableArray *learningLanguagesList;
+@property (strong, nonatomic) LanguageListView *learningLanguageListView;
+
 @end
 
 @implementation CreateProfileController
@@ -118,6 +122,8 @@
 }
 -(void) createVCLanguageDetails {
     
+    _learningLanguageListView = [[LanguageListView alloc] init];
+    
     UILabel *fluentLanguagesLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, _screenWidth/1.2, 20)];
     fluentLanguagesLabel.tag = 2;
     fluentLanguagesLabel.textColor = [UIColor whiteColor];
@@ -134,11 +140,10 @@
     [_detailsView addSubview:addFluentLanguagesButton];
     [addFluentLanguagesButton addTarget:self action:@selector(addLanguageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 
-    UIView *fluentLanguagesTagsView = [[UIView alloc] initWithFrame:CGRectMake(0, 100, _screenWidth, 100)];
-    fluentLanguagesTagsView.backgroundColor = [UIColor blueColor];
-    fluentLanguagesTagsView.tag = 2;
-    fluentLanguagesTagsView.hidden = YES;
-    [_detailsView addSubview:fluentLanguagesTagsView];
+    _fluentLanguageListView = [[LanguageListView alloc] initWithFrame:CGRectMake(0, 100, _screenWidth, 100)];
+    _fluentLanguageListView.tag = 2;
+    _fluentLanguageListView.hidden = YES;
+    [_detailsView addSubview:_fluentLanguageListView];
     
     
     UILabel *learningLanguagesLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 200, _screenWidth/1.2, 20)];
@@ -156,6 +161,11 @@
     addLearningLanguagesButton.hidden = YES;
     [_detailsView addSubview:addLearningLanguagesButton];
     [addLearningLanguagesButton addTarget:self action:@selector(addLanguageButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _learningLanguageListView = [[LanguageListView alloc] initWithFrame:CGRectMake(0, 220, _screenWidth, 100)];
+    _learningLanguageListView.tag = 2;
+    _learningLanguageListView.hidden = YES;
+    [_detailsView addSubview:_learningLanguageListView];
     
     _fluentLanguagesList = [[NSMutableArray alloc] init];
     _learningLanguagesList = [[NSMutableArray alloc] init];
@@ -242,12 +252,16 @@
     } else {
         [_learningLanguagesList addObject:selectedLanguage];
     }
-    [self updateLanguageTagViews];
+    [self updateLanguageTagViews:languageType];
     
 }
 
-- (void) updateLanguageTagViews {
-    
+- (void) updateLanguageTagViews:(NSString *)languageType {
+    if ([languageType  isEqual: @"Fluent"]) {
+        [_fluentLanguageListView updateListView:_fluentLanguagesList];
+    } else {
+      [_learningLanguageListView updateListView:_learningLanguagesList];
+    }
 }
 
 // The number of columns of data

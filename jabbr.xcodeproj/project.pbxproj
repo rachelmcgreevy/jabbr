@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		882398071E266D31008B8C65 /* Graphics in Resources */ = {isa = PBXBuildFile; fileRef = 882398061E266D31008B8C65 /* Graphics */; };
 		889E26F41E2BDC78006A615F /* LanguagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E26F31E2BDC78006A615F /* LanguagePickerViewController.m */; };
+		889E26FA1E2EBC3A006A615F /* LanguageListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 889E26F91E2EBC3A006A615F /* LanguageListView.m */; };
 		88DF11151E25A232009290B4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DF11141E25A232009290B4 /* main.m */; };
 		88DF11181E25A232009290B4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DF11171E25A232009290B4 /* AppDelegate.m */; };
 		88DF111B1E25A232009290B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DF111A1E25A232009290B4 /* ViewController.m */; };
@@ -54,6 +55,8 @@
 		886C2CC349164A9F5D6F3057 /* libPods-jabbrUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jabbrUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		889E26F21E2BDC37006A615F /* LanguagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguagePickerViewController.h; sourceTree = "<group>"; };
 		889E26F31E2BDC78006A615F /* LanguagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguagePickerViewController.m; sourceTree = "<group>"; };
+		889E26F81E2EBC1F006A615F /* LanguageListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageListView.h; sourceTree = "<group>"; };
+		889E26F91E2EBC3A006A615F /* LanguageListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageListView.m; sourceTree = "<group>"; };
 		88DF11101E25A232009290B4 /* jabbr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jabbr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88DF11141E25A232009290B4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		88DF11161E25A232009290B4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -173,6 +176,8 @@
 				88DF11481E25A383009290B4 /* CreateProfileController.m */,
 				889E26F21E2BDC37006A615F /* LanguagePickerViewController.h */,
 				889E26F31E2BDC78006A615F /* LanguagePickerViewController.m */,
+				889E26F81E2EBC1F006A615F /* LanguageListView.h */,
+				889E26F91E2EBC3A006A615F /* LanguageListView.m */,
 			);
 			name = "User Profile";
 			sourceTree = "<group>";
@@ -488,6 +493,7 @@
 			files = (
 				889E26F41E2BDC78006A615F /* LanguagePickerViewController.m in Sources */,
 				88DF111B1E25A232009290B4 /* ViewController.m in Sources */,
+				889E26FA1E2EBC3A006A615F /* LanguageListView.m in Sources */,
 				88DF11491E25A383009290B4 /* CreateProfileController.m in Sources */,
 				88DF11181E25A232009290B4 /* AppDelegate.m in Sources */,
 				88DF11151E25A232009290B4 /* main.m in Sources */,
