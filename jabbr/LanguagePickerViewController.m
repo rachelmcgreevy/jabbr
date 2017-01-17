@@ -64,14 +64,19 @@
 // The data to return for the row and component (column) that's being passed in
 - (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSString *languageString = _languagesList[row];  //can also use array[row] to get string
+    NSString *languageString = _languagesList[row];
     NSDictionary *attributeDict;
-    if (row == [pickerView selectedRowInComponent:component]){
+    if (![self anySubViewScrolling:pickerView] && row == [pickerView selectedRowInComponent:component]){
         attributeDict = @{NSForegroundColorAttributeName : [UIColor colorWithRed:14.0/255 green:122.0/255 blue:254.0/255 alpha:1.0]};
     } else {
         attributeDict = @{NSForegroundColorAttributeName : [UIColor blackColor]};
     }
     return [[NSAttributedString alloc] initWithString:languageString attributes:attributeDict];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    [pickerView reloadAllComponents];
 }
 
 -(void)closePickerView:(UIBarButtonItem *)sender {
@@ -81,4 +86,27 @@
     }
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+
+-(bool) anySubViewScrolling:(UIView*)view
+{
+    if( [ view isKindOfClass:[ UIScrollView class ] ] )
+    {
+        UIScrollView* scroll_view = (UIScrollView*) view;
+        if( scroll_view.dragging || scroll_view.decelerating )
+        {
+            return true;
+        }
+    }
+    
+    for( UIView *sub_view in [ view subviews ] )
+    {
+        if( [ self anySubViewScrolling:sub_view ] )
+        {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
 @end
