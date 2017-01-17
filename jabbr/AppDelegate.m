@@ -5,7 +5,7 @@
 //  Created by Rachel McGreevy on 10/01/2017.
 //  Copyright © 2017 Rachel McGreevy. All rights reserved.
 //
-
+@import Firebase;
 #import "AppDelegate.h"
 #import "ViewController.h"
 
@@ -18,6 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [FIRApp configure];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [[ViewController alloc] init];
     [self.window makeKeyAndVisible];

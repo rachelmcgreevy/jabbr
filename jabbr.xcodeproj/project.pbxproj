@@ -16,6 +16,12 @@
 		88DF112E1E25A232009290B4 /* jabbrTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DF112D1E25A232009290B4 /* jabbrTests.m */; };
 		88DF11391E25A232009290B4 /* jabbrUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DF11381E25A232009290B4 /* jabbrUITests.m */; };
 		88DF11491E25A383009290B4 /* CreateProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88DF11481E25A383009290B4 /* CreateProfileController.m */; };
+		BB6604B301CAC611722E7A4F /* libPods-jabbrTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E089CC6DACFD9D12CBD605E /* libPods-jabbrTests.a */; };
+		BF1DBD21992AB6CFA078889D /* libPods-jabbr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3355F0D28D9FA84AFAE91937 /* libPods-jabbr.a */; };
+		C4B1508F59921EAE903CA31D /* libPods-jabbrUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 886C2CC349164A9F5D6F3057 /* libPods-jabbrUITests.a */; };
+		D08A2D491E2E2A9C005C8F28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08A2D481E2E2A9C005C8F28 /* GoogleService-Info.plist */; };
+		D08A2D4A1E2E2A9C005C8F28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08A2D481E2E2A9C005C8F28 /* GoogleService-Info.plist */; };
+		D08A2D4B1E2E2A9C005C8F28 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08A2D481E2E2A9C005C8F28 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +42,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E089CC6DACFD9D12CBD605E /* libPods-jabbrTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jabbrTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AA81F299B886BF45132117D /* Pods-jabbr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jabbr.release.xcconfig"; path = "Pods/Target Support Files/Pods-jabbr/Pods-jabbr.release.xcconfig"; sourceTree = "<group>"; };
+		2D5EAF13377458C536E55F79 /* Pods-jabbrUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jabbrUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-jabbrUITests/Pods-jabbrUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3355F0D28D9FA84AFAE91937 /* libPods-jabbr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jabbr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		445EC29F109C0EF025B52D35 /* Pods-jabbrTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jabbrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jabbrTests/Pods-jabbrTests.debug.xcconfig"; sourceTree = "<group>"; };
+		51C0B28BCA8EE5C31775B009 /* Pods-jabbrUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jabbrUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jabbrUITests/Pods-jabbrUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		6FBDE321F6A16D63B388984E /* Pods-jabbrTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jabbrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-jabbrTests/Pods-jabbrTests.release.xcconfig"; sourceTree = "<group>"; };
+		704FE5275EB4BC1CD638C1D2 /* Pods-jabbr.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jabbr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-jabbr/Pods-jabbr.debug.xcconfig"; sourceTree = "<group>"; };
 		882398061E266D31008B8C65 /* Graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Graphics; sourceTree = "<group>"; };
+		886C2CC349164A9F5D6F3057 /* libPods-jabbrUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-jabbrUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		889E26F21E2BDC37006A615F /* LanguagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguagePickerViewController.h; sourceTree = "<group>"; };
 		889E26F31E2BDC78006A615F /* LanguagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguagePickerViewController.m; sourceTree = "<group>"; };
 		88DF11101E25A232009290B4 /* jabbr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jabbr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +70,7 @@
 		88DF113A1E25A232009290B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88DF11471E25A340009290B4 /* CreateProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateProfileController.h; sourceTree = "<group>"; };
 		88DF11481E25A383009290B4 /* CreateProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProfileController.m; sourceTree = "<group>"; };
+		D08A2D481E2E2A9C005C8F28 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF1DBD21992AB6CFA078889D /* libPods-jabbr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB6604B301CAC611722E7A4F /* libPods-jabbrTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4B1508F59921EAE903CA31D /* libPods-jabbrUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +108,8 @@
 				88DF112C1E25A232009290B4 /* jabbrTests */,
 				88DF11371E25A232009290B4 /* jabbrUITests */,
 				88DF11111E25A232009290B4 /* Products */,
+				96276649E96CAD6A5488977E /* Pods */,
+				C01646FCAAB0151028C0622D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +130,7 @@
 				88DF11171E25A232009290B4 /* AppDelegate.m */,
 				88DF11191E25A232009290B4 /* ViewController.h */,
 				88DF111A1E25A232009290B4 /* ViewController.m */,
+				D08A2D481E2E2A9C005C8F28 /* GoogleService-Info.plist */,
 				88DF11461E25A319009290B4 /* User Profile */,
 				88DF111F1E25A232009290B4 /* Assets.xcassets */,
 				882398061E266D31008B8C65 /* Graphics */,
@@ -155,6 +177,29 @@
 			name = "User Profile";
 			sourceTree = "<group>";
 		};
+		96276649E96CAD6A5488977E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				704FE5275EB4BC1CD638C1D2 /* Pods-jabbr.debug.xcconfig */,
+				2AA81F299B886BF45132117D /* Pods-jabbr.release.xcconfig */,
+				445EC29F109C0EF025B52D35 /* Pods-jabbrTests.debug.xcconfig */,
+				6FBDE321F6A16D63B388984E /* Pods-jabbrTests.release.xcconfig */,
+				51C0B28BCA8EE5C31775B009 /* Pods-jabbrUITests.debug.xcconfig */,
+				2D5EAF13377458C536E55F79 /* Pods-jabbrUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C01646FCAAB0151028C0622D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3355F0D28D9FA84AFAE91937 /* libPods-jabbr.a */,
+				0E089CC6DACFD9D12CBD605E /* libPods-jabbrTests.a */,
+				886C2CC349164A9F5D6F3057 /* libPods-jabbrUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -162,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88DF113D1E25A232009290B4 /* Build configuration list for PBXNativeTarget "jabbr" */;
 			buildPhases = (
+				AD80DA4A90FFE91A97A412FE /* [CP] Check Pods Manifest.lock */,
 				88DF110C1E25A232009290B4 /* Sources */,
 				88DF110D1E25A232009290B4 /* Frameworks */,
 				88DF110E1E25A232009290B4 /* Resources */,
+				74ECF0A428544D65336C627E /* [CP] Embed Pods Frameworks */,
+				0570C207F0E5105481ABC242 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,9 +227,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88DF11401E25A232009290B4 /* Build configuration list for PBXNativeTarget "jabbrTests" */;
 			buildPhases = (
+				EA596568486E4A7A0426E334 /* [CP] Check Pods Manifest.lock */,
 				88DF11251E25A232009290B4 /* Sources */,
 				88DF11261E25A232009290B4 /* Frameworks */,
 				88DF11271E25A232009290B4 /* Resources */,
+				4E9F0FBAAB11A0E8056F8A1A /* [CP] Embed Pods Frameworks */,
+				F5BC8161D3466C3B831D517A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -197,9 +248,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88DF11431E25A232009290B4 /* Build configuration list for PBXNativeTarget "jabbrUITests" */;
 			buildPhases = (
+				33CA72E9A10522D091CD5950 /* [CP] Check Pods Manifest.lock */,
 				88DF11301E25A232009290B4 /* Sources */,
 				88DF11311E25A232009290B4 /* Frameworks */,
 				88DF11321E25A232009290B4 /* Resources */,
+				D3EF74A390C5F171D690E294 /* [CP] Embed Pods Frameworks */,
+				997FC5D9750B3771F2812B96 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -267,6 +321,7 @@
 			files = (
 				882398071E266D31008B8C65 /* Graphics in Resources */,
 				88DF11201E25A232009290B4 /* Assets.xcassets in Resources */,
+				D08A2D491E2E2A9C005C8F28 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +329,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D08A2D4A1E2E2A9C005C8F28 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,10 +337,149 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D08A2D4B1E2E2A9C005C8F28 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0570C207F0E5105481ABC242 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jabbr/Pods-jabbr-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		33CA72E9A10522D091CD5950 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4E9F0FBAAB11A0E8056F8A1A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jabbrTests/Pods-jabbrTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		74ECF0A428544D65336C627E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jabbr/Pods-jabbr-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		997FC5D9750B3771F2812B96 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jabbrUITests/Pods-jabbrUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD80DA4A90FFE91A97A412FE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D3EF74A390C5F171D690E294 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jabbrUITests/Pods-jabbrUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EA596568486E4A7A0426E334 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F5BC8161D3466C3B831D517A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-jabbrTests/Pods-jabbrTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		88DF110C1E25A232009290B4 /* Sources */ = {
@@ -423,6 +618,7 @@
 		};
 		88DF113E1E25A232009290B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 704FE5275EB4BC1CD638C1D2 /* Pods-jabbr.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -441,6 +637,7 @@
 		};
 		88DF113F1E25A232009290B4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AA81F299B886BF45132117D /* Pods-jabbr.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -458,6 +655,7 @@
 		};
 		88DF11411E25A232009290B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 445EC29F109C0EF025B52D35 /* Pods-jabbrTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = B6C84G57E3;
@@ -471,6 +669,7 @@
 		};
 		88DF11421E25A232009290B4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FBDE321F6A16D63B388984E /* Pods-jabbrTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = B6C84G57E3;
@@ -484,6 +683,7 @@
 		};
 		88DF11441E25A232009290B4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51C0B28BCA8EE5C31775B009 /* Pods-jabbrUITests.debug.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = B6C84G57E3;
 				INFOPLIST_FILE = jabbrUITests/Info.plist;
@@ -496,6 +696,7 @@
 		};
 		88DF11451E25A232009290B4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2D5EAF13377458C536E55F79 /* Pods-jabbrUITests.release.xcconfig */;
 			buildSettings = {
 				DEVELOPMENT_TEAM = B6C84G57E3;
 				INFOPLIST_FILE = jabbrUITests/Info.plist;
